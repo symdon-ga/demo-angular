@@ -1,0 +1,12 @@
+#+TITLE: local環境用SSL/TLS証明書
+
+* 更新方法
+
+#+BEGIN_SRC shell
+openssl genrsa -rand rand.dat 2048 > server.key
+openssl req -new -key server.key -out server.csr
+openssl x509 -req -sha256 -days 365 -in server.csr -signkey server.key -out server.crty
+#+END_SRC
+
+
+参考 https://qiita.com/cilly/items/6dfcf15600b9e3d5e414
