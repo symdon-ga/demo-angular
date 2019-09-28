@@ -306,7 +306,14 @@
 
   <div class="spacer"></div>
 
-  <div>{{ profile.username }}</div>
+  <div *ngIf="loggedIn(); then thenBlock else elseBlock"></div>
+  <ng-template #thenBlock>
+    <div>{{ profile.username }}</div>
+    <button (click)="logout()">Logout</button>
+  </ng-template>
+  <ng-template #elseBlock>
+    <button (click)="login()">Login</button>
+  </ng-template>
 
   <a aria-label="Angular on twitter" target="_blank" rel="noopener" href="https://twitter.com/angular" title="Twitter">
     <svg id="twitter-logo" height="24" data-name="Logo — FIXED" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">

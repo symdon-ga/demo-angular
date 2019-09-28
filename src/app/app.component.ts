@@ -16,4 +16,16 @@ export class AppComponent {
   public ngOnInit(): void {
     this.profile = this.keycloakService.getUser();
   }
+
+  public loggedIn(): boolean {
+    return this.keycloakService.loggedIn();
+  }
+
+  public logout(): any {
+    return this.keycloakService.logout();
+  }
+
+  public login(): any {
+    return this.keycloakService.login();
+  }
 }
