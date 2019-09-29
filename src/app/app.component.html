@@ -263,6 +263,16 @@
     width: 1920px;
   }
 
+  button.header-button {
+      border: 2px solid #ffffff;
+      background: #3e88d7;
+      font-size: medium;
+      color: #fff;
+      border-radius: 8px;
+      padding: 0.5em;
+      margin: 0.5em;
+      width: 6em;
+  }
 
   /* Responsive Styles */
   @media screen and (max-width: 767px) {
@@ -309,10 +319,10 @@
   <div *ngIf="loggedIn(); then thenBlock else elseBlock"></div>
   <ng-template #thenBlock>
     <div>{{ profile.username }}</div>
-    <button (click)="logout()">Logout</button>
+    <app-account-menu></app-account-menu>
   </ng-template>
   <ng-template #elseBlock>
-    <button (click)="login()">Login</button>
+    <button class="header-button" (click)="login()">Login</button>
   </ng-template>
 
   <a aria-label="Angular on twitter" target="_blank" rel="noopener" href="https://twitter.com/angular" title="Twitter">
@@ -351,7 +361,13 @@
       </g>
     </svg>
 
-    <span>{{ title }} app is running!</span>
+    <div *ngIf="loggedIn(); then blockLoggedIn else blockNotLoggedIn"></div>
+    <ng-template #blockLoggedIn>
+      <span>Welcome {{ profile.username }}</span>
+    </ng-template>
+    <ng-template #blockNotLoggedIn>
+      <span>{{ title }} app is running!</span>
+    </ng-template>
 
     <svg id="rocket-smoke" alt="Rocket Ship Smoke" xmlns="http://www.w3.org/2000/svg" width="516.119" height="1083.632" viewBox="0 0 516.119 1083.632">
       <path id="Path_40" data-name="Path 40" d="M644.6,141S143.02,215.537,147.049,870.207s342.774,201.755,342.774,201.755S404.659,847.213,388.815,762.2c-27.116-145.51-11.551-384.124,271.9-609.1C671.15,139.365,644.6,141,644.6,141Z" transform="translate(-147.025 -140.939)" fill="#f5f5f5"/>

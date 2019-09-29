@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from './user.model';
 import { KeycloakService } from './keycloak.service';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { MatMenuTrigger } from '@angular/material';
+
 
 @Component({
   selector: 'app-root',
@@ -8,6 +11,9 @@ import { KeycloakService } from './keycloak.service';
   styleUrls: ['./app.component.styl']
 })
 export class AppComponent {
+  @ViewChild(MatMenuTrigger, {static: false}) trigger: MatMenuTrigger;
+
+
   title = 'demo-angular';
   profile: User;
 
