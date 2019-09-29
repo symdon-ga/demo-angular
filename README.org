@@ -1,6 +1,6 @@
 #+TITLE: DEMO Angular And Keycloak
 
-https://media.giphy.com/media/lnDQBJKgdMJZJ59bKs/giphy.gif
+[[https://media.giphy.com/media/lnDQBJKgdMJZJ59bKs/giphy.gif]]
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.6.
 
