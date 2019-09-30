@@ -4,9 +4,6 @@
 
 export const environment = {
   production: false,
-  KEYCLOAK_URL: 'https://localhost:8443/auth',
-  KEYCLOAK_REALM: 'demo',
-  KEYCLOAK_CLIENTID: 'kc-angular',
 };
 
 /*

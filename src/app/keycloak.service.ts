@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 
 import { User } from './user.model';
-import { environment } from '../environments/environment';
 
-declare var Keycloak: any;
+// このobjectは外部から事前にscriptタグで読み込まれるものです。
+declare var Keycloak: any;  // from keycloak.js
+declare var KeycloakConfig: any;  // from keycloak-config.js
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +16,7 @@ export class KeycloakService {
 
   static init(): Promise<any> {
     KeycloakService.auth.loggedIn = true;
-    const keycloakAuth: any = Keycloak({
-      url: environment.KEYCLOAK_URL,
-      realm: environment.KEYCLOAK_REALM,
-      clientId: environment.KEYCLOAK_CLIENTID,
-    });
+    const keycloakAuth: any = Keycloak(KeycloakConfig);
     return new Promise((resolve, reject) => {
       keycloakAuth
         .init({onLoad: 'check-sso'})
@@ -32,7 +29,7 @@ export class KeycloakService {
             KeycloakService.auth.logoutUrl =
               keycloakAuth.authServerUrl +
               '/realms/' +
-              environment.KEYCLOAK_REALM +
+              KeycloakConfig.realm +
               '/protocol/openid-connect/loggout?redirect_uri=' +
               document.baseURI;
 
